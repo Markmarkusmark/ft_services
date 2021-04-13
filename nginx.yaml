@@ -1,5 +1,19 @@
-
-----
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  #эта настройка говорит о том что наш сервайс должен к чему-то прикрепиться
+  selector:
+    app: nginx
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      #хотим открыть 80 порт
+      port: 80
+      #и прицепиться к 80 порту
+      targetPort: 80
+---
 apiVersion: v1
 kind: Pod
 metadata:
