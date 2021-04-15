@@ -9,10 +9,15 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
+      name: http
       #хотим открыть 80 порт
       port: 80
       #и прицепиться к 80 порту
       targetPort: 80
+    - protocol: TCP
+      name: https
+      port: 443
+      targetPort: 443
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -37,5 +42,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 80
+        - containerPort: 443
 
 #так выглядит базовая настройка Pod
