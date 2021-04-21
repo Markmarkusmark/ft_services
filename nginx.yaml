@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
-  #эта настройка говорит о том что наш сервайс должен к чему-то прикрепиться
+  #эта настройка говорит о том что наш сервис должен к чему-то прикрепиться
   selector:
     app: nginx
   type: LoadBalancer
