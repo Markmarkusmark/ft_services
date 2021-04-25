@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    #это диапазон внешних ip адресов, то есть это наши точки входа в наш k8s
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.99.100-192.168.99.200
