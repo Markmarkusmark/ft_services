@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx_image
+        image: nginx-image
         #настройка, указывающая не искать образ в докерхабе
         imagePullPolicy: Never
         ports:

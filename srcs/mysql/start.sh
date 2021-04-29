@@ -16,6 +16,6 @@ mysql wordpress < wordpress.sql
 
 # останавливаем клиентскуб версию
 rc-service mariadb stop
-# mysqld_safe сохраняет данные и кидает их в PV
-/usr/bin/mysqld_safe --datadir="/var/lib/mysql"
+# mysqld сохраняет данные и кидает их в PV
+/usr/bin/mysqld --datadir="/var/lib/mysql"
 sh

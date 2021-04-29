@@ -10,10 +10,12 @@ eval $(minikube docker-env)
 
 echo "create pods"
 echo "docker builds"
-docker build -t nginx_image srcs/nginx/
+docker build -t nginx-image srcs/nginx/
+docker build -t mysql-image srcs/mysql/
 
 echo "apply yaml files"
 kubectl apply -f srcs/nginx/nginx.yaml
+kubectl apply -f srcs/mysql/mysql.yaml
 
 echo "enable load balancer"
 minikube addons enable metallb
