@@ -1,21 +1,20 @@
-FROM alpine:3.12
+FROM alpine:3.11.7
 
-RUN apk update
+RUN apk update && apk upgrade
 RUN mkdir -p /run/mysqld
 RUN mkdir -p /var/lib/mysql
 #openrc - команда для запуска сервисов
-RUN apk add mysql mysql-client mariadb mariadb-client openrc
+RUN apk add mysql mysql-client mariadb mariadb-client openrc supervisor
 
+# install telegraf
+RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk add telegraf
 
-
-COPY ./my.cnf /etc/mysql/
-COPY ./start.sh .
+COPY ./my.cnf ./etc/my.cnf
+COPY ./supervisord.conf ./etc/supervisord.conf
+COPY ./start.sh ./
 # даю права для запуска sh скрипта
-RUN chmod +x /start.sh
-#COPY wordpress.sql .
-
-# VOLUME - значит взять содержимое папки (внутри контейнера) и поместить его в вульюм, который прикрепить к итоговому образу
-#VOLUME ["/var/lib"]
+RUN chmod +x ./start.sh
 
 EXPOSE 3306
 

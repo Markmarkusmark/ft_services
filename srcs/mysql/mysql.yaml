@@ -16,6 +16,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: mysql-deployment
+    labels:
+        app: mysql
 spec:
     replicas: 1
     selector:
@@ -49,8 +51,7 @@ metadata:
 spec:
     storageClassName: manual
     capacity:
-        storage: 1Gi
-    volumeMode: Filesystem
+        storage: 500Mi
     accessModes:
         - ReadWriteOnce
     hostPath:
@@ -60,13 +61,12 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
     name: mysql-pvc
-    labels:
-        app: mysql
+    #labels:
+        #app: mysql
 spec:
     storageClassName: manual
     resources:
         requests:
-            storage: 1Gi
-    volumeMode: Filesystem
+            storage: 500Mi
     accessModes:
         - ReadWriteOnce
