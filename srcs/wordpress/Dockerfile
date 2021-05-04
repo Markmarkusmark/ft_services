@@ -20,9 +20,9 @@ COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./supervisord.conf ./etc/supervisord.conf
 
 WORKDIR var/www/
-RUN wget https://ru.wordpress.0org/latest-ru_RU.tar.gz
+RUN wget https://ru.wordpress.org/latest-ru_RU.tar.gz
 RUN tar -xvf latest-ru_RU.tar.gz && rm -rf latest-ru_RU.tar.gz
-#COPY ./wp-config.php /var/www/wordpress
+COPY ./wp-config.php /var/www/wordpress
 
 WORKDIR ./
 
