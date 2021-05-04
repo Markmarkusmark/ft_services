@@ -29,8 +29,9 @@ define( 'DB_USER', 'admin' );
 define( 'DB_PASSWORD', 'admin' );
 
 /** Имя сервера MySQL */
-define( 'DB_HOST', 'mysql-service' );
-
+define( 'DB_HOST', 'mysql-service:3306' );
+#define('WP_HOME', 'http://192.168.99.100:5050');
+#define('WP_SITEURL', 'http://192.168.99.100:5050');
 /** Кодировка базы данных для создания таблиц. */
 define( 'DB_CHARSET', 'utf8' );
 
