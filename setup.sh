@@ -14,12 +14,14 @@ docker build -t nginx-image srcs/nginx/
 docker build -t mysql-image srcs/mysql/
 docker build -t phpmyadmin-image srcs/phpmyadmin/
 docker build -t wordpress-image srcs/wordpress/
+docker build -t ftps-image srcs/ftps/
 
 echo "apply yaml files"
 kubectl apply -f srcs/nginx/nginx.yaml
 kubectl apply -f srcs/mysql/mysql.yaml
 kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
+kubectl apply -f srcs/ftps/ftps.yaml
 
 echo "enable load balancer"
 minikube addons enable metallb
@@ -31,5 +33,4 @@ echo "apply configmap"
 kubectl apply -f srcs/configmap.yaml
 
 echo "launch"
-kubectl get pods
 minikube dashboard

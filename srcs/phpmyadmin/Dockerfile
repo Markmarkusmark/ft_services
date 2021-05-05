@@ -20,6 +20,7 @@ RUN apk add telegraf
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./supervisord.conf ./etc/supervisord.conf
+COPY ./telegraf.conf /etc/
 
 WORKDIR var/www/
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-english.tar.gz

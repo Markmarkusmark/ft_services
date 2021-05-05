@@ -11,7 +11,9 @@ RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
 RUN apk add telegraf
 
 COPY ./my.cnf ./etc/my.cnf
+COPY ./wordpress.sql ./
 COPY ./supervisord.conf ./etc/supervisord.conf
+COPY ./telegraf.conf /etc/
 COPY ./start.sh ./
 # даю права для запуска sh скрипта
 RUN chmod +x ./start.sh

@@ -6,14 +6,14 @@ metadata:
     annotations:
         metallb.universe.tf/allow-shared-ip: lol
 spec:
-    type: LoadBalancer
-    selector:
-        app: phpmyadmin
     ports:
         - protocol: TCP
           port: 5000
           name: phpmyadmin
           targetPort: 5000
+    type: LoadBalancer
+    selector:
+        app: phpmyadmin
 ---
 apiVersion: apps/v1
 kind: Deployment
