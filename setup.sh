@@ -15,6 +15,7 @@ docker build -t mysql-image srcs/mysql/
 docker build -t phpmyadmin-image srcs/phpmyadmin/
 docker build -t wordpress-image srcs/wordpress/
 docker build -t ftps-image srcs/ftps/
+docker build -t grafana-image srcs/grafana/
 
 echo "apply yaml files"
 kubectl apply -f srcs/nginx/nginx.yaml
@@ -22,6 +23,7 @@ kubectl apply -f srcs/mysql/mysql.yaml
 kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
 kubectl apply -f srcs/ftps/ftps.yaml
+kubectl apply -f srcs/grafana/grafana.yaml
 
 echo "enable load balancer"
 minikube addons enable metallb

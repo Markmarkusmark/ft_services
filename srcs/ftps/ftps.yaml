@@ -15,7 +15,7 @@ spec:
       name: port-25000
 metadata:
   name: ftps-service
-    # one ip for all service
+  # one ip for all service
   annotations:
     metallb.universe.tf/allow-shared-ip: lol
 ---
