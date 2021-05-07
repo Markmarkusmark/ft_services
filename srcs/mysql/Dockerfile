@@ -1,6 +1,6 @@
 FROM alpine:3.11.7
 
-RUN apk update && apk upgrade
+RUN apk update
 RUN mkdir -p /run/mysqld
 RUN mkdir -p /var/lib/mysql
 #openrc - команда для запуска сервисов

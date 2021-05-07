@@ -1,6 +1,6 @@
 FROM alpine:3.12
 
-RUN apk update && apk upgrade
+RUN apk update
 
 RUN apk add supervisor openrc vsftpd openssl
 

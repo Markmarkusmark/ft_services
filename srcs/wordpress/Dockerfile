@@ -1,6 +1,6 @@
 FROM alpine:3.12
 
-RUN apk update && apk upgrade
+RUN apk update
 
 RUN mkdir -p /run/nginx
 
@@ -20,12 +20,10 @@ COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./supervisord.conf ./etc/supervisord.conf
 COPY ./telegraf.conf /etc/
 
-WORKDIR var/www/
 RUN wget https://ru.wordpress.org/latest-ru_RU.tar.gz
 RUN tar -xvf latest-ru_RU.tar.gz && rm -rf latest-ru_RU.tar.gz
-COPY ./wp-config.php /var/www/wordpress
-
-WORKDIR ./
+RUN mv wordpress /var/www/
+COPY ./wp-config.php /var/www/wordpress/wp-config.php
 
 EXPOSE 5050
 

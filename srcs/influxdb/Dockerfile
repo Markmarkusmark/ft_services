@@ -1,8 +1,8 @@
 FROM alpine:3.12
 
-RUN apk update && apk upgrade
+RUN apk update
 
-RUN apk add supervisor influxdb
+RUN apk add supervisor influxdb vim
 
 RUN mkdir -p /etc/influxdb
 RUN mkdir -p /var/lib/influxdb

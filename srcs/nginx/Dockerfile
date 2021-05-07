@@ -1,8 +1,8 @@
 # установка контейнерной ОС
 FROM alpine:3.12
 
-# установка и обновление образов
-RUN apk update && apk upgrade
+# установка образa
+RUN apk update
 RUN mkdir -p /run/nginx
 
 RUN apk add nginx openssl supervisor

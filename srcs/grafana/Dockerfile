@@ -1,8 +1,12 @@
 FROM alpine:3.12
 
-RUN apk update && apk upgrade
+RUN apk update
 
-RUN apk add supervisor grafana
+RUN apk add supervisor
+
+# install grafana
+RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk add grafana
 
 # install telegraf
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
@@ -12,13 +16,8 @@ COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./telegraf.conf /etc/
 COPY ./grafana.ini /etc/
 
-#WORKDIR	/usr/share/grafana/data
-#COPY ./grafana.db ./
-
-WORKDIR ./
-COPY ./start.sh ./
-RUN chmod +x start.sh
+COPY ./grafana.db /usr/share/grafana/data/grafana.db
 
 EXPOSE 3000
 
-CMD sh start.sh
+CMD /usr/bin/supervisord -c /etc/supervisord.conf
